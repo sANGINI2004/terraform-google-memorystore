@@ -19,6 +19,16 @@ output "id" {
   value       = google_redis_cluster.redis_cluster.id
 }
 
+output "host" {
+  description = "The IP address of the cluster instance."
+  value       = google_redis_cluster.redis_cluster.discovery_endpoints[0].address
+}
+
+output "port" {
+  description = "The port number of the exposed Redis cluster endpoint."
+  value       = google_redis_cluster.redis_cluster.discovery_endpoints[0].port
+}
+
 output "discovery_endpoints" {
   description = "Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one endpoint is supported"
   value       = google_redis_cluster.redis_cluster.discovery_endpoints
